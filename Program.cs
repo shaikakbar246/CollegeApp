@@ -1,6 +1,7 @@
 using CollegeApp.Configuration;
 using CollegeApp.Data;
 using CollegeApp.Data.Repository;
+using CollegeApp.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +41,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHadlingMiddleware();
 }
 
 app.UseHttpsRedirection();
